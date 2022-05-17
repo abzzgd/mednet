@@ -15,7 +15,7 @@ my $page = get("http://bashorg.org/");
 my @res_out;
 
 for my $el ($page =~ /class="q".+?(#\d+.*?)<\/span/sg) {
-  $el =~ /#(\d*).*?\|\s(.*)\s\|.*?class="quote">(.*)<\/div>.*>(\d*)/s;
+  $el =~ /#(\d*).*?\|\s(.*)\s\|.*?class="quote">(.*)<\/div>.*>(-?\d*)/s;
   
   $db->do("
     INSERT INTO quotes (number,date,content,rating)
